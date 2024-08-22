@@ -1,0 +1,515 @@
+/* Base styles */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+    color: #333;
+    line-height: 1.6;
+    background-color: #f4f4f4;
+}
+
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* Header styles */
+header {
+    background-color: #333;
+    color: #fff;
+    padding: 15px 0;
+    position: relative;
+}
+
+header .logo {
+    font-size: 28px;
+    font-weight: bold;
+    margin: 0;
+    text-decoration: none;
+    color: #fff;
+}
+
+header nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+header nav ul li {
+    margin: 0;
+}
+
+header nav ul li a {
+    color: #fff;
+    text-decoration: none;
+    padding: 10px 15px;
+    transition: background 0.3s, color 0.3s;
+}
+
+header nav ul li a:hover,
+header nav ul li a.active {
+    background: #e74c3c;
+    color: #fff;
+    border-radius: 5px;
+}
+
+header .menu-toggle {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+}
+
+header .menu-toggle .bar {
+    background: #fff;
+    height: 3px;
+    width: 30px;
+    margin: 5px 0;
+    transition: all 0.3s;
+}
+
+header .menu-toggle.active .bar:nth-child(1) {
+    transform: rotate(45deg) translate(5px, 6px);
+}
+
+header .menu-toggle.active .bar:nth-child(2) {
+    opacity: 0;
+}
+
+header .menu-toggle.active .bar:nth-child(3) {
+    transform: rotate(-45deg) translate(5px, -6px);
+}
+
+/* Hero section */
+.hero {
+    background: url('images/hero.jpg') no-repeat center center/cover;
+    color: #fff;
+    padding: 120px 20px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 1;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.hero-content h2 {
+    font-size: 3rem;
+    margin: 0 0 20px;
+    animation: fadeInUp 1s ease-out;
+}
+
+.hero-content p {
+    font-size: 1.5rem;
+    margin: 0 0 20px;
+    animation: fadeInUp 1s 0.5s ease-out;
+}
+
+.cta-button {
+    background-color: #e74c3c;
+    color: #fff;
+    padding: 15px 30px;
+    text-decoration: none;
+    border-radius: 30px;
+    font-size: 1.1rem;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+.cta-button:hover {
+    background-color: #c0392b;
+    transform: scale(1.05);
+}
+
+/* Featured Dishes section */
+.featured-dishes {
+    padding: 60px 20px;
+    text-align: center;
+}
+
+.featured-dishes h2 {
+    font-size: 2.5rem;
+    margin: 0 0 40px;
+}
+
+.dish-card {
+    display: inline-block;
+    width: calc(33.333% - 40px);
+    margin: 20px;
+    border-radius: 10px;
+    overflow: hidden;
+    background: #fff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: box-shadow 0.3s, transform 0.3s;
+}
+
+.dish-card img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.dish-info {
+    padding: 15px;
+    text-align: center;
+}
+
+.dish-info h3 {
+    margin: 0 0 10px;
+}
+
+.dish-info p {
+    margin: 0 0 15px;
+}
+
+.dish-info .cta-button {
+    margin-top: 10px;
+}
+
+/* About Us section */
+.about-us {
+    background: #fff;
+    padding: 60px 20px;
+    text-align: center;
+    border-top: 5px solid #e74c3c;
+}
+
+.about-us h2 {
+    font-size: 2.5rem;
+    margin: 0 0 20px;
+}
+
+.about-us p {
+    margin: 0 0 20px;
+    line-height: 1.6;
+}
+
+/* Menu section */
+.menu {
+    padding: 60px 20px;
+    background: #f9f9f9;
+}
+
+.menu-category {
+    margin: 40px 0;
+}
+
+.menu-category h3 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+}
+
+.menu-item {
+    display: flex;
+    align-items: center;
+    background: #fff;
+    border-radius: 10px;
+    overflow: hidden;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: box-shadow 0.3s, transform 0.3s;
+}
+
+.menu-item img {
+    width: 40%;
+    height: auto;
+}
+
+.menu-item div {
+    padding: 15px;
+    width: 60%;
+}
+
+.menu-item h4 {
+    margin: 0 0 10px;
+}
+
+.menu-item p {
+    margin: 0 0 10px;
+}
+
+.menu-item .add-to-cart {
+    margin-top: 10px;
+}
+
+/* Order section */
+.order {
+    padding: 60px 20px;
+    background: #fff;
+}
+
+#cart-items {
+    margin-bottom: 40px;
+}
+
+.cart-item {
+    display: flex;
+    align-items: center;
+    background: #fff;
+    border-radius: 10px;
+    padding: 15px;
+    margin-bottom: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.cart-item img {
+    width: 80px;
+    height: auto;
+    margin-right: 15px;
+}
+
+.cart-item p {
+    margin: 0;
+    flex: 1;
+}
+
+.cart-item .remove-from-cart {
+    background-color: #c0392b;
+    color: #fff;
+    padding: 5px 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#order-form {
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+#order-form label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+#order-form input,
+#order-form textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+#order-form button {
+    background-color: #e74c3c;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+}
+
+/* Contact section */
+.contact {
+    padding: 60px 20px;
+    background: #fff;
+}
+
+.contact-form {
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.contact-form label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.contact-form input,
+.contact-form textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+.contact-form button {
+    background-color: #e74c3c;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+}
+
+/* Footer styles */
+footer {
+    background-color: #333;
+    color: #fff;
+    padding: 15px 0;
+    text-align: center;
+}
+/* Base styles */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+    color: #333;
+    line-height: 1.6;
+    background-color: #f4f4f4;
+}
+
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* Header styles */
+header {
+    background-color: #333;
+    color: #fff;
+    padding: 15px 0;
+    position: relative;
+}
+
+header h1 {
+    font-size: 28px;
+    font-weight: bold;
+    margin: 0;
+}
+
+header nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+header nav ul li {
+    margin: 0;
+}
+
+header nav ul li a {
+    color: #fff;
+    text-decoration: none;
+    padding: 10px 15px;
+    transition: background 0.3s, color 0.3s;
+}
+
+header nav ul li a:hover,
+header nav ul li a.active {
+    background: #e74c3c;
+    color: #fff;
+    border-radius: 5px;
+}
+
+header .menu-toggle {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+}
+
+header .menu-toggle .bar {
+    background: #fff;
+    height: 3px;
+    width: 30px;
+    margin: 5px 0;
+    transition: all 0.3s;
+}
+
+header .menu-toggle.active .bar:nth-child(1) {
+    transform: rotate(45deg) translate(5px, 6px);
+}
+
+header .menu-toggle.active .bar:nth-child(2) {
+    opacity: 0;
+}
+
+header .menu-toggle.active .bar:nth-child(3) {
+    transform: rotate(-45deg) translate(5px, -6px);
+}
+
+/* Menu section */
+.menu {
+    padding: 60px 20px;
+    background: #f9f9f9;
+}
+
+.menu-category {
+    margin: 40px 0;
+}
+
+.menu-category h3 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+}
+
+.menu-item {
+    display: flex;
+    align-items: center;
+    background: #fff;
+    border-radius: 10px;
+    overflow: hidden;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: box-shadow 0.3s, transform 0.3s;
+}
+
+.menu-item img {
+    width: 40%;
+    height: auto;
+}
+
+.menu-item div {
+    padding: 15px;
+    width: 60%;
+}
+
+.menu-item h4 {
+    margin: 0 0 10px;
+}
+
+.menu-item p {
+    margin: 0 0 10px;
+}
+
+.menu-item .add-to-cart {
+    margin-top: 10px;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+    header nav ul {
+        display: none;
+    }
+
+    header nav.active ul {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .menu-toggle {
+        display: flex;
+    }
+
+    .menu-item img {
+        width: 100%;
+    }
+}

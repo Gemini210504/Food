@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order - Foodie's Paradise</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>Foodie's Paradise</h1>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="menu.html">Menu</a></li>
+                    <li><a href="order.html" class="active">Order</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                    <li><a href="history.html">Order History</a></li>
+                </ul>
+            </nav>
+            <div class="menu-toggle" id="menu-toggle">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section class="order">
+            <div class="container">
+                <h2>Your Order</h2>
+                <div id="cart-items"></div>
+                <form id="order-form">
+                    <label for="customer-name">Name:</label>
+                    <input type="text" id="customer-name" required>
+                    <label for="customer-address">Address:</label>
+                    <input type="text" id="customer-address" required>
+                    <label for="customer-phone">Phone:</label>
+                    <input type="text" id="customer-phone" required>
+                    <button type="submit">Submit Order</button>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 Foodie's Paradise</p>
+        </div>
+    </footer>
+
+    <script src="scripts.js" defer></script>
+</body>
+</html>

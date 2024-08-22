@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menu - Foodie's Paradise</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>Foodie's Paradise</h1>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="menu.html" class="active">Menu</a></li>
+                    <li><a href="order.html">Order</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                    <li><a href="history.html">Order History</a></li>
+                </ul>
+            </nav>
+            <div class="menu-toggle" id="menu-toggle">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section class="menu">
+            <div class="container">
+                <h2>Menu</h2>
+                <div class="menu-category">
+                    <h3>Khmer Food</h3>
+                    <div class="menu-item" data-name="Amok" data-price="14.00">
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ78S7vMkQLTXx9bAijh-IlRNwwLTknRqdYEw&s" alt="Amok">
+                        <div class="menu-info">
+                            <h4>Amok</h4>
+                            <p>$14.00</p>
+                            <button class="add-to-cart">Add to Cart</button>
+                        </div>
+                    </div>
+                    <!-- More Khmer food items here -->
+                </div>
+                <div class="menu-category">
+                    <h3>Thai Food</h3>
+                    <div class="menu-item" data-name="Pad Thai" data-price="13.00">
+                        <img src="https://pinchofyum.com/wp-content/uploads/Vegetarian-Pad-Thai-Recipe.jpg" alt="Pad Thai">
+                        <div class="menu-info">
+                            <h4>Pad Thai</h4>
+                            <p>$13.00</p>
+                            <button class="add-to-cart">Add to Cart</button>
+                        </div>
+                    </div>
+                    <!-- More Thai food items here -->
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 Foodie's Paradise</p>
+        </div>
+    </footer>
+
+    <script src="scripts.js" defer></script>
+</body>
+</html>
