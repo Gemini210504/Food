@@ -9,7 +9,7 @@
 <body>
     <header>
         <div class="container">
-            <h1>Foodie's Paradise</h1>
+            <h1 class="logo"><a href="index.html">Foodie's Paradise</a></h1>
             <nav>
                 <ul>
                     <li><a href="index.html">Home</a></li>
@@ -18,30 +18,60 @@
                     <li><a href="contact.html">Contact</a></li>
                     <li><a href="history.html" class="active">Order History</a></li>
                 </ul>
+                <div class="menu-toggle" aria-label="Toggle navigation">
+                    <div class="bar"></div>
+                    <div class="bar"></div>
+                    <div class="bar"></div>
+                </div>
             </nav>
-            <div class="menu-toggle" id="menu-toggle">
-                <span class="bar"></span>
-                <span class="bar"></span>
-                <span class="bar"></span>
-            </div>
         </div>
     </header>
 
     <main>
         <section class="order-history">
             <div class="container">
-                <h2>Order History</h2>
-                <div id="order-history"></div>
+                <h2>Your Order History</h2>
+
+                <div id="order-history">
+                    <!-- Order history will be inserted here -->
+                </div>
             </div>
         </section>
     </main>
 
     <footer>
         <div class="container">
-            <p>&copy; 2024 Foodie's Paradise</p>
+            <p>&copy; 2024 Foodie's Paradise. All rights reserved.</p>
         </div>
     </footer>
 
-    <script src="scripts.js" defer></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const orderHistoryContainer = document.getElementById('order-history');
+            const orderHistory = JSON.parse(localStorage.getItem('orderHistory')) || [];
+
+            if (orderHistory.length === 0) {
+                orderHistoryContainer.innerHTML = '<p>No orders found.</p>';
+            } else {
+                orderHistory.forEach(order => {
+                    const orderElement = document.createElement('div');
+                    orderElement.className = 'order-item';
+                    orderElement.innerHTML = `
+                        <h3>Order placed on ${new Date(order.date).toLocaleString()}</h3>
+                        <p><strong>Name:</strong> ${order.name}</p>
+                        <p><strong>Email:</strong> ${order.email}</p>
+                        <p><strong>Address:</strong> ${order.address}</p>
+                        <h4>Items:</h4>
+                        <ul>
+                            ${order.items.map(item => `
+                                <li>${item.name} - $${item.price.toFixed(2)} x ${item.quantity}</li>
+                            `).join('')}
+                        </ul>
+                    `;
+                    orderHistoryContainer.appendChild(orderElement);
+                });
+            }
+        });
+    </script>
 </body>
 </html>

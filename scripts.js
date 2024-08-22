@@ -1,180 +1,66 @@
 document.addEventListener('DOMContentLoaded', () => {
-    const cart = [];
     const cartItemsContainer = document.getElementById('cart-items');
-    const orderForm = document.getElementById('order-form');
+    let cart = JSON.parse(localStorage.getItem('cart')) || [];
 
-    // Menu item "Add to Cart" event handler
-    document.querySelectorAll('.add-to-cart').forEach(button => {
-        button.addEventListener('click', function() {
-            const menuItem = this.parentElement.parentElement;
-            const name = menuItem.getAttribute('data-name');
-            const price = parseFloat(menuItem.getAttribute('data-price'));
-            
-            cart.push({ name, price });
-            updateCart();
-        });
-    });
-
-    // Remove item from cart
     function updateCart() {
         cartItemsContainer.innerHTML = '';
-        let total = 0;
 
-        cart.forEach((item, index) => {
-            total += item.price;
-            cartItemsContainer.innerHTML += `
-                <div class="cart-item">
-                    <img src="images/dish${index + 1}.jpg" alt="${item.name}">
-                    <p>${item.name} - $${item.price.toFixed(2)}</p>
-                    <button class="remove-from-cart" data-index="${index}">Remove</button>
-                </div>
-            `;
-        });
-
-        // Update total
-        cartItemsContainer.innerHTML += `<h3>Total: $${total.toFixed(2)}</h3>`;
-
-        // Attach event listeners to remove buttons
-        document.querySelectorAll('.remove-from-cart').forEach(button => {
-            button.addEventListener('click', function() {
-                const index = parseInt(this.getAttribute('data-index'));
-                cart.splice(index, 1);
-                updateCart();
-            });
-        });
-    }
-
-    // Handle form submission
-    if (orderForm) {
-        orderForm.addEventListener('submit', (e) => {
-            e.preventDefault();
-            alert('Order submitted! Thank you.');
-            cart.length = 0; // Clear the cart
-            updateCart();
-            orderForm.reset();
-        });
-    }
-});
-document.addEventListener('DOMContentLoaded', () => {
-    const cartItemsContainer = document.getElementById('cart-items');
-    const orderForm = document.getElementById('order-form');
-    const orderHistoryContainer = document.getElementById('order-history');
-    const menuToggle = document.getElementById('menu-toggle');
-
-    // Menu Item Add to Cart
-    document.querySelectorAll('.add-to-cart').forEach(button => {
-        button.addEventListener('click', function() {
-            const item = this.closest('.menu-item');
-            const name = item.getAttribute('data-name');
-            const price = parseFloat(item.getAttribute('data-price'));
-            
-            let cart = JSON.parse(localStorage.getItem('cart')) || [];
-            cart.push({ name, price });
-            localStorage.setItem('cart', JSON.stringify(cart));
-
-            alert(`${name} has been added to your cart.`);
-        });
-    });
-
-    // Update Cart
-    function updateCart() {
-        if (cartItemsContainer) {
-            let cart = JSON.parse(localStorage.getItem('cart')) || [];
-            cartItemsContainer.innerHTML = '';
-            let total = 0;
-
+        if (cart.length === 0) {
+            cartItemsContainer.innerHTML = '<p>Your cart is empty.</p>';
+        } else {
             cart.forEach((item, index) => {
-                total += item.price;
-                cartItemsContainer.innerHTML += `
-                    <div class="cart-item">
-                        <img src="images/dish${index + 1}.jpg" alt="${item.name}">
-                        <p>${item.name} - $${item.price.toFixed(2)}</p>
-                        <button class="remove-from-cart" data-index="${index}">Remove</button>
-                    </div>
+                const itemElement = document.createElement('div');
+                itemElement.className = 'cart-item';
+                itemElement.innerHTML = `
+                    <p><strong>${item.name}</strong> - $${item.price.toFixed(2)} x ${item.quantity}</p>
+                    <button class="remove-item" data-index="${index}">Remove</button>
                 `;
-            });
-
-            // Update total
-            cartItemsContainer.innerHTML += `<h3>Total: $${total.toFixed(2)}</h3>`;
-
-            // Attach event listeners to remove buttons
-            document.querySelectorAll('.remove-from-cart').forEach(button => {
-                button.addEventListener('click', function() {
-                    const index = parseInt(this.getAttribute('data-index'));
-                    cart.splice(index, 1);
-                    localStorage.setItem('cart', JSON.stringify(cart));
-                    updateCart();
-                });
+                cartItemsContainer.appendChild(itemElement);
             });
         }
     }
 
-    // Handle Order Form Submission
-    if (orderForm) {
-        orderForm.addEventListener('submit', (e) => {
-            e.preventDefault();
-            const name = document.getElementById('customer-name').value;
-            const address = document.getElementById('customer-address').value;
-            const phone = document.getElementById('customer-phone').value;
+    function handleRemoveItem(event) {
+        if (event.target.classList.contains('remove-item')) {
+            const index = parseInt(event.target.getAttribute('data-index'), 10);
+            cart.splice(index, 1); // Remove item from the cart array
+            localStorage.setItem('cart', JSON.stringify(cart)); // Update localStorage
+            updateCart(); // Refresh the cart display
+        }
+    }
 
-            if (!name || !address || !phone) {
-                alert('Please fill out all fields.');
-                return;
-            }
+    updateCart(); // Initial cart display
 
-            let cart = JSON.parse(localStorage.getItem('cart')) || [];
-            if (cart.length === 0) {
-                alert('Your cart is empty.');
-                return;
-            }
+    cartItemsContainer.addEventListener('click', handleRemoveItem);
 
-            // Save order to history
-            let orderHistory = JSON.parse(localStorage.getItem('orderHistory')) || [];
-            const total = cart.reduce((sum, item) => sum + item.price, 0);
-            orderHistory.push({ name, address, phone, items: cart, total });
+    document.querySelector('.order-form').addEventListener('submit', event => {
+        event.preventDefault();
+
+        const name = event.target.querySelector('input[name="name"]').value;
+        const email = event.target.querySelector('input[name="email"]').value;
+        const address = event.target.querySelector('input[name="address"]').value;
+
+        if (name && email && address) {
+            // Save order details
+            const orderHistory = JSON.parse(localStorage.getItem('orderHistory')) || [];
+            const order = {
+                date: new Date().toISOString(),
+                name,
+                email,
+                address,
+                items: cart
+            };
+            orderHistory.push(order);
             localStorage.setItem('orderHistory', JSON.stringify(orderHistory));
 
-            alert('Order submitted successfully!');
-            localStorage.removeItem('cart'); // Clear cart
-            updateCart();
-            orderForm.reset();
-        });
-    }
-
-    // Load Order History
-    function loadOrderHistory() {
-        if (orderHistoryContainer) {
-            let orders = JSON.parse(localStorage.getItem('orderHistory')) || [];
-            orderHistoryContainer.innerHTML = '';
-
-            orders.forEach((order, index) => {
-                orderHistoryContainer.innerHTML += `
-                    <div class="order-item">
-                        <h3>Order #${index + 1}</h3>
-                        <p>Name: ${order.name}</p>
-                        <p>Address: ${order.address}</p>
-                        <p>Phone: ${order.phone}</p>
-                        <ul>
-                            ${order.items.map(item => `<li>${item.name} - $${item.price.toFixed(2)}</li>`).join('')}
-                        </ul>
-                        <p>Total: $${order.total.toFixed(2)}</p>
-                    </div>
-                `;
-            });
+            // Clear cart and notify user
+            localStorage.removeItem('cart'); // Clear the cart
+            cart = []; // Clear the cart array
+            updateCart(); // Refresh the cart display
+            alert('Order placed successfully!');
+            event.target.reset();
+        } else {
+            alert('Please fill in all fields.');
         }
-    }
-
-    // Update cart on page load
-    updateCart();
-
-    // Load order history on page load
-    loadOrderHistory();
-
-    // Menu Toggle for Responsive Design
-    if (menuToggle) {
-        menuToggle.addEventListener('click', () => {
-            document.querySelector('header').classList.toggle('active');
-            menuToggle.classList.toggle('active');
-        });
-    }
+    });
 });

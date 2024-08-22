@@ -5,11 +5,40 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Menu - Foodie's Paradise</title>
     <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Add the CSS animation for button */
+        .add-to-cart {
+            background-color: #e53e3e;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s ease, transform 0.3s ease;
+        }
+
+        .add-to-cart.added {
+            animation: bounce 0.3s ease;
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {
+                transform: translateY(0);
+            }
+            40% {
+                transform: translateY(-10px);
+            }
+            60% {
+                transform: translateY(-5px);
+            }
+        }
+    </style>
 </head>
 <body>
     <header>
         <div class="container">
-            <h1>Foodie's Paradise</h1>
+            <h1 class="logo"><a href="index.html">Foodie's Paradise</a></h1>
             <nav>
                 <ul>
                     <li><a href="index.html">Home</a></li>
@@ -18,42 +47,312 @@
                     <li><a href="contact.html">Contact</a></li>
                     <li><a href="history.html">Order History</a></li>
                 </ul>
+                <div class="menu-toggle" aria-label="Toggle navigation">
+                    <div class="bar"></div>
+                    <div class="bar"></div>
+                    <div class="bar"></div>
+                </div>
             </nav>
-            <div class="menu-toggle" id="menu-toggle">
-                <span class="bar"></span>
-                <span class="bar"></span>
-                <span class="bar"></span>
-            </div>
         </div>
     </header>
 
     <main>
         <section class="menu">
             <div class="container">
-                <h2>Menu</h2>
+                <h2>Our Menu</h2>
+
+                <!-- Khmer Food -->
                 <div class="menu-category">
                     <h3>Khmer Food</h3>
-                    <div class="menu-item" data-name="Amok" data-price="14.00">
-                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ78S7vMkQLTXx9bAijh-IlRNwwLTknRqdYEw&s" alt="Amok">
-                        <div class="menu-info">
-                            <h4>Amok</h4>
-                            <p>$14.00</p>
-                            <button class="add-to-cart">Add to Cart</button>
+                    <div class="menu-items">
+                        <!-- Example Dish -->
+                        <div class="dish-card">
+                            <img src="https://walkaboutmonkey.com/wp-content/uploads/2019/02/Prahok-Ktiss2-optimized.jpg" alt="Khmer Dish 1">
+                            <div class="dish-info">
+                                <h4>ប្រហុកខ្ទិះ</h4>
+                                <p>Delicious Khmer dish with traditional spices.</p>
+                                <span>$3.00</span>
+                                <button class="add-to-cart" data-name="Khmer Dish 1" data-price="3.00">Add to Cart</button>
+                            </div>
+
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/7/75/Num_Banchok.jpg" alt="Khmer Dish 1">
+                            <div class="dish-info">
+                                <h4>នំបញ្ចុកសម្លខ្មែរ</h4>
+                                <p>Delicious Khmer dish with traditional spices.</p>
+                                <span>$3.00</span>
+                                <button class="add-to-cart" data-name="Khmer Dish 1" data-price="3.00">Add to Cart</button>
+                            </div>
+
+                            <img src="https://askacambodian.net/wp-content/uploads/2015/06/su.png" alt="Khmer Dish 1">
+                            <div class="dish-info">
+                                <h4>សម្លកកូរ</h4>
+                                <p>Delicious Khmer dish with traditional spices.</p>
+                                <span>$3.00</span>
+                                <button class="add-to-cart" data-name="Khmer Dish 1" data-price="3.00">Add to Cart</button>
+                            </div>
+
+                            <img src="https://static.ips-cambodia.com/wp-content/uploads/2023/06/Somlor-mchu-prolit.jpg" alt="Khmer Dish 1">
+                            <div class="dish-info">
+                                <h4>សម្លម្ជូរប្រលិត</h4>
+                                <p>Delicious Khmer dish with traditional spices.</p>
+                                <span>$3.00</span>
+                                <button class="add-to-cart" data-name="Khmer Dish 1" data-price="3.00">Add to Cart</button>
+                            </div>
+
+                            <img src="http://image.freshnewsasia.com/2021/id-024/fn-2023-08-01-18-27-02-0.jpg" alt="Khmer Dish 1">
+                            <div class="dish-info">
+                                <h4>អាម៉ុកត្រី (Fish Amok)</h4>
+                                <p>Delicious Khmer dish with traditional spices.</p>
+                                <span>$3.00</span>
+                                <button class="add-to-cart" data-name="Khmer Dish 1" data-price="3.00">Add to Cart</button>
+                            </div>
+
+                            <img src="http://image.freshnewsasia.com/2021/id-024/fn-2023-08-01-18-27-13-0.jpg" alt="Khmer Dish 1">
+                            <div class="dish-info">
+                                <h4>មាន់ដុត (Roast Chicken)</h4>
+                                <p>Delicious Khmer dish with traditional spices.</p>
+                                <span>$3.00</span>
+                                <button class="add-to-cart" data-name="Khmer Dish 1" data-price="3.00">Add to Cart</button>
+                            </div>
+
+                            <img src="https://1.bp.blogspot.com/-tk2Zj-qQMqo/XfDAsfH7doI/AAAAAAAAGRQ/Pw2d1KCWrtE_HAURa-2_ZucU8Ti4P9RHACLcBGAsYHQ/s1600/a4.jpg" alt="Khmer Dish 1">
+                            <div class="dish-info">
+                                <h4>បាយសាច់ជ្រូក</h4>
+                                <p>Delicious Khmer dish with traditional spices.</p>
+                                <span>$3.00</span>
+                                <button class="add-to-cart" data-name="Khmer Dish 1" data-price="3.00">Add to Cart</button>
+                            </div>
+
+                            <img src="https://3.bp.blogspot.com/-K8Ou3LPnoNA/XfDAsrJFgwI/AAAAAAAAGRU/3Aw0kXdi9LsjScf33NTgK6jNJOWQblYRQCLcBGAsYHQ/s1600/a5.jpg" alt="Khmer Dish 1">
+                            <div class="dish-info">
+                                <h4>ការីសាច់មាន់</h4>
+                                <p>Delicious Khmer dish with traditional spices.</p>
+                                <span>$3.00</span>
+                                <button class="add-to-cart" data-name="Khmer Dish 1" data-price="3.00">Add to Cart</button>
+                            </div>
+
+                            <img src="https://1.bp.blogspot.com/-lvZ1p8PwBl4/XfDAsypXK5I/AAAAAAAAGRY/VmbncYiTlwAKjEjt15BSv2OsZ0XfpXowgCLcBGAsYHQ/s1600/a6.jpg" alt="Khmer Dish 1">
+                            <div class="dish-info">
+                                <h4>បុកត្រប់ពុតលំញង</h4>
+                                <p>Delicious Khmer dish with traditional spices.</p>
+                                <span>$3.00</span>
+                                <button class="add-to-cart" data-name="Khmer Dish 1" data-price="3.00">Add to Cart</button>
+                            </div>
+
+                            <img src="https://4.bp.blogspot.com/-Svrqqn8FexE/XfDAtTk3gQI/AAAAAAAAGRc/PHEzEWsA_HYzlh_i_t3c7gtAkftm2GBhQCLcBGAsYHQ/s1600/a7.jpg" alt="Khmer Dish 1">
+                            <div class="dish-info">
+                                <h4>ខគោ</h4>
+                                <p>Delicious Khmer dish with traditional spices.</p>
+                                <span>$3.00</span>
+                                <button class="add-to-cart" data-name="Khmer Dish 1" data-price="3.00">Add to Cart</button>
+                            </div>
+
+                            <img src="https://1.bp.blogspot.com/-1P7gmb7vDB0/XfDAuJreK9I/AAAAAAAAGRk/cn3Sn4YIQp0kHSsd_kXn_3zjSjKmHArxwCLcBGAsYHQ/s1600/a9.jpg" alt="Khmer Dish 1">
+                            <div class="dish-info">
+                                <h4>សោ្ងជ្រក់សាច់ត្រី</h4>
+                                <p>Delicious Khmer dish with traditional spices.</p>
+                                <span>$3.00</span>
+                                <button class="add-to-cart" data-name="Khmer Dish 1" data-price="3.00">Add to Cart</button>
+                            </div>
+
+                            <img src="https://4.bp.blogspot.com/-TULNYwzJYhI/XfDAlbT70ZI/AAAAAAAAGP8/d8gvzJfvttkb2GaPlMe57WfThXI1LC91QCLcBGAsYHQ/s1600/a12.jpg" alt="Khmer Dish 1">
+                            <div class="dish-info">
+                                <h4>ទឹកគ្រឿង</h4>
+                                <p>Delicious Khmer dish with traditional spices.</p>
+                                <span>$3.00</span>
+                                <button class="add-to-cart" data-name="Khmer Dish 1" data-price="3.00">Add to Cart</button>
+                            </div>
+
+                            <img src="https://1.bp.blogspot.com/-Gb2kaBvF_Xg/XfDAmW2xD4I/AAAAAAAAGQI/ts-bvPk1AWE8SQiUB2KSvy2JGeOjUfXCwCLcBGAsYHQ/s1600/a15.jpg" alt="Khmer Dish 1">
+                            <div class="dish-info">
+                                <h4>មីកូឡា</h4>
+                                <p>Delicious Khmer dish with traditional spices.</p>
+                                <span>$3.00</span>
+                                <button class="add-to-cart" data-name="Khmer Dish 1" data-price="3.00">Add to Cart</button>
+                            </div>
+
+                            <img src="https://2.bp.blogspot.com/-S0KL9ab_ZjE/XfDAmx_rHsI/AAAAAAAAGQQ/rjNxKgctnV0s7kqdmsRMLqsHjObTmsEvACLcBGAsYHQ/s1600/a17.jpg" alt="Khmer Dish 1">
+                            <div class="dish-info">
+                                <h4>ភ្លាសាច់គោ</h4>
+                                <p>Delicious Khmer dish with traditional spices.</p>
+                                <span>$3.00</span>
+                                <button class="add-to-cart" data-name="Khmer Dish 1" data-price="3.00">Add to Cart</button>
+                            </div>
+
+                            <img src="https://2.bp.blogspot.com/-kXR6HFdhmJo/XfDAoUq9_4I/AAAAAAAAGQg/KZ4HtiUVlwQ-y7lgFmfzrchWyTqR56F8ACLcBGAsYHQ/s1600/a20.jpg" alt="Khmer Dish 1">
+                            <div class="dish-info">
+                                <h4>សម្លម្ជូរគ្រឿងសាច់គោ</h4>
+                                <p>Delicious Khmer dish with traditional spices.</p>
+                                <span>$3.00</span>
+                                <button class="add-to-cart" data-name="Khmer Dish 1" data-price="3.00">Add to Cart</button>
+                            </div>
                         </div>
+                        <!-- Add more dishes here -->
                     </div>
-                    <!-- More Khmer food items here -->
                 </div>
+
+                <!-- Thai Food -->
                 <div class="menu-category">
                     <h3>Thai Food</h3>
-                    <div class="menu-item" data-name="Pad Thai" data-price="13.00">
-                        <img src="https://pinchofyum.com/wp-content/uploads/Vegetarian-Pad-Thai-Recipe.jpg" alt="Pad Thai">
-                        <div class="menu-info">
-                            <h4>Pad Thai</h4>
-                            <p>$13.00</p>
-                            <button class="add-to-cart">Add to Cart</button>
+                    <div class="menu-items">
+                        <!-- Example Dish -->
+                        <div class="dish-card">
+                            <img src="https://data.asiahighlights.com/image/travel-guide/thailand/thai-food/tom-yum-goong.webp" alt="Thai Dish 1">
+                            <div class="dish-info">
+                                <h4>Tom Yum Goong (Spicy Shrimp Soup)</h4>
+                                <p>Authentic Thai dish with fresh ingredients.</p>
+                                <span>$3.00</span>
+                                <button class="add-to-cart" data-name="Thai Dish 1" data-price="3.00">Add to Cart</button>
+                            </div>
+
+                            <img src="https://data.asiahighlights.com/image/travel-guide/thailand/thai-food/thai-coconut-chicken.webp" alt="Thai Dish 1">
+                            <div class="dish-info">
+                                <h4>Tom Kha Kai (Thai Chicken Coconut Soup)</h4>
+                                <p>Authentic Thai dish with fresh ingredients.</p>
+                                <span>$3.00</span>
+                                <button class="add-to-cart" data-name="Thai Dish 1" data-price="3.00">Add to Cart</button>
+                            </div>
+
+                            <img src="https://data.asiahighlights.com/image/travel-guide/thailand/thai-food/thai-noodle-soup.webp" alt="Thai Dish 1">
+                            <div class="dish-info">
+                                <h4>Guay Tiew Reua (Noodle Soup)</h4>
+                                <p>Authentic Thai dish with fresh ingredients.</p>
+                                <span>$3.00</span>
+                                <button class="add-to-cart" data-name="Thai Dish 1" data-price="3.00">Add to Cart</button>
+                            </div>
+
+                            <img src="https://data.asiahighlights.com/image/travel-guide/thailand/thai-food/pad-thai.webp" alt="Thai Dish 1">
+                            <div class="dish-info">
+                                <h4>Pad Thai (Thai-Style Fried Noodles)</h4>
+                                <p>Authentic Thai dish with fresh ingredients.</p>
+                                <span>$3.00</span>
+                                <button class="add-to-cart" data-name="Thai Dish 1" data-price="3.00">Add to Cart</button>
+                            </div>
+
+                            <img src="https://data.asiahighlights.com/image/travel-guide/thailand/thai-food/pad-thai-2.webp" alt="Thai Dish 1">
+                            <div class="dish-info">
+                                <h4>Khao Pad (Thai Fried Rice)</h4>
+                                <p>Authentic Thai dish with fresh ingredients.</p>
+                                <span>$3.00</span>
+                                <button class="add-to-cart" data-name="Thai Dish 1" data-price="3.00">Add to Cart</button>
+                            </div>
+
+                            <img src="https://data.asiahighlights.com/image/travel-guide/thailand/thai-food/thai-red-curry(1).webp" alt="Thai Dish 1">
+                            <div class="dish-info">
+                                <h4>Gaeng Daeng Gai (Red Curry with Chicken)</h4>
+                                <p>Authentic Thai dish with fresh ingredients.</p>
+                                <span>$3.00</span>
+                                <button class="add-to-cart" data-name="Thai Dish 1" data-price="3.00">Add to Cart</button>
+                            </div>
+
+                            <img src="https://data.asiahighlights.com/image/travel-guide/thailand/thai-food/thai-green-curry-with-chicken.webp" alt="Thai Dish 1">
+                            <div class="dish-info">
+                                <h4></h4>
+                                <p>Authentic Thai dish with fresh ingredients.</p>
+                                <span>$3.00</span>
+                                <button class="add-to-cart" data-name="Thai Dish 1" data-price="3.00">Add to Cart</button>
+                            </div>
+
+                            <img src="https://data.asiahighlights.com/image/travel-guide/thailand/thai-food/thai-green-curry-with-chicken.webp" alt="Thai Dish 1">
+                            <div class="dish-info">
+                                <h4>Gaeng Keow Wan Gai (Green Curry with Chicken)</h4>
+                                <p>Authentic Thai dish with fresh ingredients.</p>
+                                <span>$3.00</span>
+                                <button class="add-to-cart" data-name="Thai Dish 1" data-price="3.00">Add to Cart</button>
+                            </div>
+
+                            <img src="https://data.asiahighlights.com/image/travel-guide/thailand/thai-food/thai-yellow-curry.webp" alt="Thai Dish 1">
+                            <div class="dish-info">
+                                <h4>Kaeng Lueang (Yellow Curry with Chicken)</h4>
+                                <p>Authentic Thai dish with fresh ingredients.</p>
+                                <span>$3.00</span>
+                                <button class="add-to-cart" data-name="Thai Dish 1" data-price="3.00">Add to Cart</button>
+                            </div>
+
+                            <img src="https://data.asiahighlights.com/image/travel-guide/thailand/thai-food/Pineapple-Fried-Rice.webp" alt="Thai Dish 1">
+                            <div class="dish-info">
+                                <h4>Khao Pad Sapparod (Pineapple Fried Rice)</h4>
+                                <p>Authentic Thai dish with fresh ingredients.</p>
+                                <span>$3.00</span>
+                                <button class="add-to-cart" data-name="Thai Dish 1" data-price="3.00">Add to Cart</button>
+                            </div>
+
+                            <img src="https://data.asiahighlights.com/image/travel-guide/thailand/thai-food/Minced-Pork-Stir-Fried-with-Thai-Basil.webp" alt="Thai Dish 1">
+                            <div class="dish-info">
+                                <h4>Pad Kra Pao Moo (Minced Pork Stir-Fried with Thai Basil)</h4>
+                                <p>Authentic Thai dish with fresh ingredients.</p>
+                                <span>$3.00</span>
+                                <button class="add-to-cart" data-name="Thai Dish 1" data-price="3.00">Add to Cart</button>
+                            </div>
+
+                            <img src="" alt="Thai Dish 1">
+                            <div class="dish-info">
+                                <h4></h4>
+                                <p>Authentic Thai dish with fresh ingredients.</p>
+                                <span>$3.00</span>
+                                <button class="add-to-cart" data-name="Thai Dish 1" data-price="3.00">Add to Cart</button>
+                            </div>
                         </div>
+                        <!-- Add more dishes here -->
                     </div>
-                    <!-- More Thai food items here -->
+                </div>
+
+                <!-- Korean Food -->
+                <div class="menu-category">
+                    <h3>Korean Food</h3>
+                    <div class="menu-items">
+                        <!-- Example Dish -->
+                        <div class="dish-card">
+                            <img src="https://www.thespruceeats.com/thmb/eFzxoZFO-ZWurv42gxrBveHYOf4=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/classic-korean-bibimbap-recipe-2118765-step-011-acab906539594dc9a668c7fbb753c43d.jpg" alt="Korean Dish 1">
+                            <div class="dish-info">
+                                <h4>Bibimbap</h4>
+                                <p>Spicy and flavorful Korean dish.</p>
+                                <span>$3.5</span>
+                                <button class="add-to-cart" data-name="Bibimbap" data-price="3.5">Add to Cart</button>
+                            </div>
+
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/56/Vegetable_gimbap.jpg/640px-Vegetable_gimbap.jpg" alt="Korean Dish 1">
+                            <div class="dish-info">
+                                <h4>Gimbap</h4>
+                                <p>Spicy and flavorful Korean dish.</p>
+                                <span>$3.00</span>
+                                <button class="add-to-cart" data-name="Gimbap" data-price="3.00">Add to Cart</button>
+                            </div>
+
+                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTaJQLfH9SWZeumRRgZqLhUu7AGALcv9bhyCA&s" alt="Korean Dish 1">
+                            <div class="dish-info">
+                                <h4>Tteokbokki</h4>
+                                <p>Spicy and flavorful Korean dish.</p>
+                                <span>$2.50</span>
+                                <button class="add-to-cart" data-name="KTteokbokki" data-price="2.50">Add to Cart</button>
+                            </div>
+
+                            <img src="https://img.freepik.com/premium-photo/jajangmyeon-jjajangmyeon-is-korean-noodle-with-black-sauce-korean-food-style_1339-127253.jpg" alt="Korean Dish 1">
+                            <div class="dish-info">
+                                <h4>JJajangmyeon</h4>
+                                <p>Spicy and flavorful Korean dish.</p>
+                                <span>$3.00</span>
+                                <button class="add-to-cart" data-name="JJajangmyeon" data-price="3.00">Add to Cart</button>
+                            </div>
+
+                            <img src="https://cdn.apartmenttherapy.info/image/upload/f_auto,q_auto:eco,c_fill,g_auto,w_1500,ar_3:2/k%2FPhoto%2FSeries%2F2023-11-how-to-make-kimchi%2Fhow-to-make-kimchi-259" alt="Korean Dish 1">
+                            <div class="dish-info">
+                                <h4>Kimchi</h4>
+                                <p>Spicy and flavorful Korean dish.</p>
+                                <span>$2.50</span>
+                                <button class="add-to-cart" data-name="Kimchi" data-price="2.50">Add to Cart</button>
+                            </div>
+
+                            <img src="https://www.gimmesomeoven.com/wp-content/uploads/2018/02/Japchae-Recipe-1.jpg" alt="Korean Dish 1">
+                            <div class="dish-info">
+                                <h4>Japchae</h4>
+                                <p>Spicy and flavorful Korean dish.</p>
+                                <span>$3.00</span>
+                                <button class="add-to-cart" data-name="Japchae" data-price="3.00">Add to Cart</button>
+                            </div>
+                        </div>
+                        <!-- Add more dishes here -->
+                    </div>
                 </div>
             </div>
         </section>
@@ -61,10 +360,37 @@
 
     <footer>
         <div class="container">
-            <p>&copy; 2024 Foodie's Paradise</p>
+            <p>&copy; 2024 Foodie's Paradise. All rights reserved.</p>
         </div>
     </footer>
 
-    <script src="scripts.js" defer></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+            document.querySelectorAll('.add-to-cart').forEach(button => {
+                button.addEventListener('click', () => {
+                    const name = button.getAttribute('data-name');
+                    const price = parseFloat(button.getAttribute('data-price'));
+
+                    // Find or add item to cart
+                    const existingItem = cart.find(item => item.name === name);
+                    if (existingItem) {
+                        existingItem.quantity += 1;
+                    } else {
+                        cart.push({ name, price, quantity: 1 });
+                    }
+
+                    localStorage.setItem('cart', JSON.stringify(cart));
+
+                    // Add animation
+                    button.classList.add('added');
+                    setTimeout(() => button.classList.remove('added'), 300);
+
+                    alert(`${name} added to cart!`);
+                });
+            });
+        });
+    </script>
 </body>
 </html>
